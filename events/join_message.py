@@ -17,16 +17,19 @@ def on_joined(bot,nick,**kw):
             pos-=21
             f.seek(pos if pos>0 else 0)
             pos = f.tell()
-            data = f.read()
+            data = f.read(20)
             f.seek(pos)
             data = data.splitlines()
-            lines = data[1:]
+            lines = data[1:-1]
+            incomplete_line=(data[-1]+incomplete_line) if len(data)>0 else ""
+            if incomplete_line.count(" ")==2:
+                lines+=[incomplete_line]
 
-            lines = filter(lambda x: x[0]==nick or (False if len(x)<=3 else x[2]==nick) , map(str.split,lines))
+            lines = filter(lambda x: x[0]==nick , map(str.split,lines))
             line=None
             for line in lines: pass
             if line!=None:
-                last_seen=float(line[2]) if len(line)<=3 else float(line[3])
+                last_seen=float(line[2])
     if last_seen is not None:
         bot.send("%BVítej zpátky, {0}!%B Naposledy jsi tu byl {1}.".format(
                     nick, datetime.fromtimestamp(last_seen).strftime("%d. %m. %H:%M")
@@ -41,7 +44,3 @@ def on_joined(bot,nick,**kw):
 def on_left(bot,nick,**kw):
     with open("data/JoinsLeaves.csv","a") as f:
         f.write("{0} {1} {2}\n".format(nick,"left",time.time()))
-
-def on_nick(bot,nick,new_nick,**kw):
-    with open("data/JoinsLeaves.csv","a") as f:
-        f.write("{0} renamed {1} {2}\n".format(nick, new_nick, time.time()))
