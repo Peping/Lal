@@ -3,8 +3,8 @@ Command tutorial
 
 Napíšeme si jednoduchý příkaz pro bota Lal. Nazveme ho !hello.
 
-Vytvořme si soubor hello.py v adresáři command. Je důležité, aby měl tento tvar
-i s odsazením. Pro mě za mě to klidně zkopírujte:
+Vytvořme si soubor hello.py v adresáři command a napíšeme do něj kód. Je potřeba,
+aby měl tento tvar i s odsazením. Pro mě za mě to klidně zkopírujte:
 
 # -*- coding: utf-8 -*-
 
@@ -12,12 +12,13 @@ def run(bot, nick, cmd, *args):
 	pass
 
 Je důležité vědět, že python odsazení používá k rozlišení jednotlivých bloků. 
-Nemá nic jako složené závorky v C, nebo begin...end v Pascalu. To, co jsme 
-napsali, definuje funkci run s parametry bot, nick, cmd a neomezeně mnoho dalších
-parametrů, které při zavolání budou v seznamu args. Pass je jenom pomocné slovíčko
-pythonu, které říká "nedělej nic". Bez něj by to ale nefungovalo, protože za každou
-dvojtečkou, ať už je u def, if, while nebo for, python čeká odsazení. Něco tam 
-prostě dát musíme.
+Nemá nic jako složené závorky v C, nebo begin...end v Pascalu. 
+
+To, co jsme napsali, definuje funkci run s parametry bot, nick, cmd a neomezeně 
+mnoho dalších parametrů, které při zavolání budou v seznamu args. Pass je jenom 
+pomocné slovíčko pythonu, které říká "nedělej nic". Bez něj by to ale nefungovalo,
+protože za každou dvojtečkou, ať už je u def, if, while nebo for, python čeká 
+odsazení. Něco tam prostě dát musíme.
 
 Teď, když máme funkci, co nic nedělá, je potřeba udělat ještě jednu věc. Přidat
 ji do seznamu spouštěných příkazů. To uděláme tak, že otevřeme soubor __init__.py
