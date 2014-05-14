@@ -1,0 +1,84 @@
+Command tutorial
+----------------
+
+Napíšeme si jednoduchý příkaz pro bota Lal. Nazveme ho !hello.
+
+Vytvořme si soubor hello.py v adresáři command. Je důležité, aby měl tento tvar
+i s odsazením. Pro mě za mě to klidně zkopírujte:
+
+# -*- coding: utf-8 -*-
+
+def run(bot, nick, cmd, *args):
+	pass
+
+Je důležité vědět, že python odsazení používá k rozlišení jednotlivých bloků. 
+Nemá nic jako složené závorky v C, nebo begin...end v Pascalu. To, co jsme 
+napsali, definuje funkci run s parametry bot, nick, cmd a neomezeně mnoho dalších
+parametrů, které při zavolání budou v seznamu args. Pass je jenom pomocné slovíčko
+pythonu, které říká "nedělej nic". Bez něj by to ale nefungovalo, protože za každou
+dvojtečkou, ať už je u def, if, while nebo for, python čeká odsazení. Něco tam 
+prostě dát musíme.
+
+Teď, když máme funkci, co nic nedělá, je potřeba udělat ještě jednu věc. Přidat
+ji do seznamu spouštěných příkazů. To uděláme tak, že otevřeme soubor __init__.py
+v adresáři command a do seznamu __all__ připíšeme jméno našeho souboru bez přípony
+.py, tedy "hello":
+
+__all__=[
+    "help",
+    "himetime",
+    "obsluha",
+    "pumpac",
+    "hello"
+    ]
+
+Tohle je hotovo. Teď můžeme bota spustit a při zadání příkazu "!hello" už nevypíše,
+že příkaz nezná, ale místo toho se nestane nic. Nuda, co? Chce to trochu víc šťávy.
+
+Necháme bota nás pozdravit. Pozdraví tak, že na kanál napíše "[nick]: Zdravím tě".
+K psaní na kanál nám poslouží metoda send:
+
+# -*- coding: utf-8 -*-
+
+def run(bot, nick, cmd, *args):
+	bot.send(nick+": Zdravím tě.")
+
+Restartujte bota a tadá! Lal nás zdraví. Teď něco trochu složitějšího. Řekneme botovi,
+aby od nás pozdravil někoho jiného. Řekněme, že "!hello Pepa" vypíše "Pepa, zdraví tě
+[nick]". Pepa se nám teď objeví v args, tedy seznamu argumentů po příkazu hello. 
+Dostaneme se k němu pod indexem 0.
+
+# -*- coding: utf-8 -*-
+
+def run(bot, nick, cmd, *args):
+	bot.send(args[0]+", zdraví tě "+nick)
+
+Ok, to by šlo, ale co když někdo napíše jenom "!hello" ? Pak bude args prázdná a 
+nebude mít index 0 a ... Příkaz nám selže a vypíše do konzole chybu. Měli bychom to 
+ošetřit. Ke kontrole délky řetězců a seznamů v pythonu slouží funkce len:
+
+# -*- coding: utf-8 -*-
+
+def run(bot, nick, cmd, *args):
+	if len(args)!=1:
+		bot.send(nick + "Čekala jsem, že budeš chtít napsat spíš !hello <nick>")
+	else:
+		bot.send(args[0]+", zdraví tě "+nick)
+
+Po restartu bota všechno funguje, jak bychom chtěli. Ale pořád je tu ještě jedna 
+maličkost, co by se dala vyřešit - co když člověk, koho zdravíme na kanále zrovna 
+není? Teď nám přijde vhod Lalina vlastnost names (bot.names). Je to množina nicků
+přítomných na kanále a automaticky se aktualizuje. Když tedy námi zadaný nick nebude
+na kanále vypíšeme chybu:
+
+# -*- coding: utf-8 -*-
+
+def run(bot, nick, cmd, *args):
+	if len(args)!=1:
+		bot.send(nick + ": Čekala jsem, že budeš chtít napsat spíš !hello <nick>")
+	elif args[0] not in bot.names:
+		bot.send(nick + ": Proč bych zdravila někoho, kdo tu není?" )
+	else:
+		bot.send(args[0]+", zdraví tě "+nick)
+
+poznámka: Oproti else if nebo elseif python zkracuje ještě víc. Používá jenom "elif".

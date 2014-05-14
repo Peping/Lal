@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module Lal</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>Lal</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:///D:/plocha/chytrolin/chytrolin/lal.py">d:\plocha\chytrolin\chytrolin\lal.py</a></font></td></tr></table>
+    <p><tt><a href="#Lal">Lal</a><br>
+&nbsp;<br>
+<a href="#Lal">Lal</a>&nbsp;je&nbsp;robot&nbsp;pro&nbsp;<a href="IRC.html#IRC">IRC</a>&nbsp;kanál&nbsp;irc.rizon.net/#vch&nbsp;.&nbsp;Je&nbsp;open&nbsp;source&nbsp;a&nbsp;je<br>
+psaný&nbsp;modulárně.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="command.html">command</a><br>
+<a href="events.html">events</a><br>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">
+<dl>
+<dt><font face="helvetica, arial"><a href="Lal.html#Lal">Lal</a>
+</font></dt></dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Lal">class <strong>Lal</strong></a>(<a href="IRC.html#IRC">IRC.IRC</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Třída&nbsp;pro&nbsp;<a href="IRC.html#IRC">IRC</a>&nbsp;bota&nbsp;<a href="#Lal">Lal</a><br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="Lal.html#Lal">Lal</a></dd>
+<dd><a href="IRC.html#IRC">IRC.IRC</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Lal-__init__"><strong>__init__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Lal-bot_command"><strong>bot_command</strong></a>(self, origin, cmd, *args)</dt><dd><tt>Zavolá&nbsp;korespondující&nbsp;příkaz&nbsp;pro&nbsp;bota&nbsp;z&nbsp;modulu&nbsp;command</tt></dd></dl>
+
+<dl><dt><a name="Lal-me"><strong>me</strong></a>(self, msg, target='#LalTest')</dt><dd><tt>Odešle&nbsp;emote</tt></dd></dl>
+
+<dl><dt><a name="Lal-msg"><strong>msg</strong></a>(self, target, msg)</dt><dd><tt>Odešle&nbsp;zprávu&nbsp;msg&nbsp;na&nbsp;kanál&nbsp;target&nbsp;nebo&nbsp;uživateli&nbsp;target</tt></dd></dl>
+
+<dl><dt><a name="Lal-notice"><strong>notice</strong></a>(self, target, msg)</dt><dd><tt>Odešle&nbsp;notice&nbsp;příjemci&nbsp;target</tt></dd></dl>
+
+<dl><dt><a name="Lal-on_channel_message"><strong>on_channel_message</strong></a>(self, origin, message, **kw)</dt><dd><tt>Zpracuje&nbsp;zprávu&nbsp;z&nbsp;kanálu,&nbsp;pokud&nbsp;obsahuje&nbsp;příkaz&nbsp;pro&nbsp;bota</tt></dd></dl>
+
+<dl><dt><a name="Lal-on_connect"><strong>on_connect</strong></a>(self)</dt><dd><tt>Interní!&nbsp;Nevolat&nbsp;explicitně!&nbsp;Identifikuje&nbsp;bota&nbsp;pro&nbsp;NickServ&nbsp;a&nbsp;připojí&nbsp;se&nbsp;na&nbsp;CHANNEL</tt></dd></dl>
+
+<dl><dt><a name="Lal-on_query"><strong>on_query</strong></a>(self, origin, message, **kw)</dt><dd><tt>Reaguje&nbsp;na&nbsp;!reload&nbsp;do&nbsp;query&nbsp;tak,&nbsp;že&nbsp;znovu&nbsp;načte&nbsp;eventy&nbsp;a&nbsp;příkazy</tt></dd></dl>
+
+<dl><dt><a name="Lal-send"><strong>send</strong></a>(self, msg)</dt><dd><tt>Odešle&nbsp;zprávu&nbsp;msg&nbsp;na&nbsp;kanál&nbsp;CHANNEL</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="IRC.html#IRC">IRC.IRC</a>:<br>
+<dl><dt><a name="Lal-add_handler"><strong>add_handler</strong></a>(self, event_name, handler)</dt></dl>
+
+<dl><dt><a name="Lal-clear_handlers"><strong>clear_handlers</strong></a>(self, event_name)</dt></dl>
+
+<dl><dt><a name="Lal-connect"><strong>connect</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Lal-ctcp_command"><strong>ctcp_command</strong></a>(self, target, command, args=())</dt></dl>
+
+<dl><dt><a name="Lal-ctcp_reply"><strong>ctcp_reply</strong></a>(self, target, command, args=())</dt></dl>
+
+<dl><dt><a name="Lal-join"><strong>join</strong></a>(self, target)</dt></dl>
+
+<dl><dt><a name="Lal-nick"><strong>nick</strong></a>(self, new_nick)</dt></dl>
+
+<dl><dt><a name="Lal-parse_line"><strong>parse_line</strong></a>(self, nick, hostname, remainder)</dt></dl>
+
+<dl><dt><a name="Lal-parse_other"><strong>parse_other</strong></a>(self, line)</dt></dl>
+
+<dl><dt><a name="Lal-raise_event"><strong>raise_event</strong></a>(self, event_name, **kwargs)</dt></dl>
+
+<dl><dt><a name="Lal-raw_command"><strong>raw_command</strong></a>(self, command, args=(), msg=None)</dt></dl>
+
+<dl><dt><a name="Lal-remove_handler"><strong>remove_handler</strong></a>(self, event_name, handler_id)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="IRC.html#IRC">IRC.IRC</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-format_msg"><strong>format_msg</strong></a>(msg)</dt></dl>
+</td></tr></table><p>
+</body></html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: package events</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>events</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:///D:/plocha/chytrolin/chytrolin/events/__init__.py">d:\plocha\chytrolin\chytrolin\events\__init__.py</a></font></td></tr></table>
+    <p><tt>Modul&nbsp;events<br>
+&nbsp;<br>
+Tento&nbsp;modul&nbsp;se&nbsp;stará&nbsp;o&nbsp;vaše&nbsp;události.&nbsp;Události&nbsp;můžete&nbsp;definovat&nbsp;v&nbsp;jakémkoliv<br>
+souboru&nbsp;v&nbsp;adresáři&nbsp;events,&nbsp;ale&nbsp;nesmíte&nbsp;jeho&nbsp;jméno&nbsp;zapomenout&nbsp;přidat&nbsp;<br>
+do&nbsp;proměnné&nbsp;__all__&nbsp;v&nbsp;__init__.py<br>
+&nbsp;<br>
+Handler&nbsp;události&nbsp;má&nbsp;tvar:<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;def&nbsp;on_event(bot,&nbsp;**keyword_args)<br>
+&nbsp;<br>
+Přičemž&nbsp;každá&nbsp;událost&nbsp;předává&nbsp;jiné&nbsp;argumenty.&nbsp;Seznam&nbsp;událostí&nbsp;a&nbsp;jejich<br>
+argumentů&nbsp;je&nbsp;v&nbsp;následující&nbsp;tabulce:<br>
+&nbsp;<br>
+Event:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Parametry:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Popis:<br>
+"ctcp"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;origin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Jméno&nbsp;odesilatele<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;is_request&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Říká,&nbsp;jestli&nbsp;byl&nbsp;ctcp&nbsp;přijat&nbsp;jako&nbsp;NOTICE<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nebo&nbsp;jako&nbsp;PRIVMSG<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;command&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CTCP&nbsp;příkaz&nbsp;jako&nbsp;řetězec<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;message&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To,&nbsp;co&nbsp;následuje&nbsp;za&nbsp;příkazem<br>
+"query"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;origin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Jméno&nbsp;odesilatele<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;message&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Přijatá&nbsp;zpráva<br>
+"notice"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;origin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Jméno&nbsp;odesilatele<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;message&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Přijatá&nbsp;zpráva<br>
+"channel&nbsp;message"&nbsp;&nbsp;origin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Jméno&nbsp;odesilatele<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;channel&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kanál&nbsp;ze&nbsp;kterého&nbsp;byla&nbsp;zpráva&nbsp;přijata<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;message&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Přijatá&nbsp;zpráva<br>
+"channel&nbsp;notice"&nbsp;&nbsp;&nbsp;origin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Jméno&nbsp;odesilatele<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;channel&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kanál&nbsp;ze&nbsp;kterého&nbsp;byla&nbsp;zpráva&nbsp;přijata<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;message&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Přijatá&nbsp;zpráva<br>
+"joined"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nick&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Přezdívka&nbsp;toho,&nbsp;co&nbsp;se&nbsp;připojil<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;channel&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kanál,&nbsp;na&nbsp;který&nbsp;se&nbsp;připojil<br>
+"left"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nick&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Přezdívka&nbsp;toho,&nbsp;co&nbsp;se&nbsp;odpojil<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;channel&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kanál&nbsp;postižený&nbsp;odchodem<br>
+"connected"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-<br>
+"nick&nbsp;in&nbsp;use"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-<br>
+"errorneous&nbsp;nick"&nbsp;&nbsp;-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+Pozn:&nbsp;Bot&nbsp;automaticky&nbsp;"natvrdo"&nbsp;zpracovává&nbsp;následující&nbsp;události:<br>
+CTCP&nbsp;ping,&nbsp;PING&nbsp;od&nbsp;serveru,&nbsp;CTCP&nbsp;VERSION&nbsp;requesty,&nbsp;"connected",&nbsp;"nick&nbsp;in<br>
+use"<br>
+&nbsp;<br>
+Na&nbsp;CTCP&nbsp;ping,&nbsp;PING&nbsp;a&nbsp;CTCP&nbsp;VERSION&nbsp;odpovídá&nbsp;podle&nbsp;IRC&nbsp;RFC&nbsp;specifikace.<br>
+V&nbsp;události&nbsp;connected&nbsp;se&nbsp;bot&nbsp;připojuje&nbsp;do&nbsp;místnosti&nbsp;a&nbsp;identifikuje&nbsp;<br>
+přes&nbsp;NickServ.<br>
+Na&nbsp;nick&nbsp;in&nbsp;use&nbsp;bot&nbsp;reaguje&nbsp;přidáním&nbsp;podtržítka&nbsp;(_)&nbsp;za&nbsp;nick.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;<br>
+Event&nbsp;handler&nbsp;po&nbsp;napsání&nbsp;musíte&nbsp;zmínit&nbsp;ve&nbsp;funkci&nbsp;load&nbsp;souboru&nbsp;__init__.py<br>
+a&nbsp;to&nbsp;sice&nbsp;v&nbsp;sekci&nbsp;označené&nbsp;"Sem&nbsp;patří&nbsp;vaše&nbsp;event&nbsp;handlery".&nbsp;Za&nbsp;předpokladu,<br>
+že&nbsp;chcete&nbsp;reagovat&nbsp;na&nbsp;událost&nbsp;"channel&nbsp;message"&nbsp;a&nbsp;máte&nbsp;pro&nbsp;ni&nbsp;handler&nbsp;<br>
+on_msg&nbsp;v&nbsp;souboru&nbsp;foo.py&nbsp;bude&nbsp;řádek,&nbsp;který&nbsp;přidáte&nbsp;do&nbsp;seznamu&nbsp;vypadat&nbsp;takto:<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;HND("channel&nbsp;message",foo.on_msg)<br>
+&nbsp;<br>
+Připomínám,&nbsp;že&nbsp;v&nbsp;tomto&nbsp;případě&nbsp;musí&nbsp;být&nbsp;"foo"&nbsp;v&nbsp;seznamu&nbsp;__all__&nbsp;v&nbsp;souboru&nbsp;<br>
+__init__.py<br>
+&nbsp;<br>
+Debugging<br>
+---------<br>
+&nbsp;<br>
+Silně&nbsp;doporučuji&nbsp;psát&nbsp;kód&nbsp;v&nbsp;něčem,&nbsp;co&nbsp;podporuje&nbsp;debugování.&nbsp;Já&nbsp;Lal&nbsp;psal<br>
+ve&nbsp;Visual&nbsp;studiu&nbsp;a&nbsp;vyplatilo&nbsp;se&nbsp;mi&nbsp;to.&nbsp;Bot&nbsp;všechny&nbsp;chyby&nbsp;zachytává,&nbsp;aby<br>
+při&nbsp;každé&nbsp;výjimce&nbsp;nespadnul.&nbsp;Stručný&nbsp;výpis&nbsp;chyby&nbsp;najdete&nbsp;v&nbsp;konzolovém&nbsp;okně.</tt></p>
+
+</body></html>
