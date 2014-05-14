@@ -70,7 +70,7 @@ Po restartu bota všechno funguje, jak bychom chtěli. Ale pořád je tu ještě
 maličkost, co by se dala vyřešit - co když člověk, koho zdravíme na kanále zrovna 
 není? Teď nám přijde vhod Lalina vlastnost names (bot.names). Je to množina nicků
 přítomných na kanále a automaticky se aktualizuje. Když tedy námi zadaný nick nebude
-na kanále vypíšeme chybu:
+na kanále, vypíšeme chybu:
 
 # -*- coding: utf-8 -*-
 
