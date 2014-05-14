@@ -94,6 +94,7 @@ def load(bot):
     handlers=[
         HND("joined",join_message.on_joined),
         HND("left",join_message.on_left),
+        HND("nick",join_message.on_nick),
         HND("channel message",not_a_robot.on_channel_msg),
     ]
 
