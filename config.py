@@ -1,2 +1,3 @@
-NICKNAME = "LalTest" # !!! Po mergenutí tohle zmìò !!!
+NICKNAME = "LalTest" # !!! Po mergenutï¿½ tohle zmï¿½ï¿½ !!!
 CHANNEL = "#LalTest"
+SERVER = "irc.rizon.net"

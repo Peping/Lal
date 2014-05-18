@@ -36,7 +36,7 @@ realname - realname bota
 names - množina lidí na kanále (set)
     """
     def __init__(self):
-        IRC.__init__(self,"irc.rizon.net")
+        IRC.__init__(self,SERVER)
         self.version = "Lal, robot pro #vch 0.0.1"
         self.nickname = NICKNAME
         self.realname = "Lal, VCh robot"
