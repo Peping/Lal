@@ -36,10 +36,10 @@ realname - realname bota
 names - množina lidí na kanále (set)
     """
     def __init__(self):
-        IRC.__init__(self,"irc.rizon.net")
-        self.version = "Lal, robot pro #vch 0.0.1"
+        IRC.__init__(self,SERVER)
+        self.version = VERSION
         self.nickname = NICKNAME
-        self.realname = "Lal, VCh robot"
+        self.realname = REALNAME
         self.names = set()
 
         self.add_handler("connected",lambda **kw: self.on_connect())
@@ -87,7 +87,7 @@ names - množina lidí na kanále (set)
 
     def on_channel_message(self,origin,message,**kw):
         """Zpracuje zprávu z kanálu, pokud obsahuje příkaz pro bota"""
-        if message[0]=="!" and len(message)>1:
+        if message[0]==COMMANDPREFIX and len(message)>1:
             split = message[1:].split()
             cmd = split[0].translate(strip_accents_dict)
             args = split[1:] if len(split)>1 else []
@@ -95,7 +95,7 @@ names - množina lidí na kanále (set)
 
     def on_query(self,origin,message,**kw):
         """Reaguje na !reload do query tak, že znovu načte eventy a příkazy. Nefunguje?"""
-        if message=="!reload":
+        if message==COMMANDPREFIX+"reload":
             try:
                 reload_module(command)
             except SyntaxError:
@@ -133,12 +133,12 @@ names - množina lidí na kanále (set)
             try:
                 getattr(command,cmd).run(self,origin,cmd,*args)
             except Exception as e:
-                print("Error in !"+cmd+":")
+                print("Error in "+COMMANDPREFIX+cmd+":")
                 traceback.print_exc()
 
-                self.notice(origin,"%C01,08× Příkaz %B!"+cmd+"%B selhal.%C10 Možná bys o tom měl dát vědět autorovi")
+                self.notice(origin,"%C01,08× Příkaz %B"+COMMANDPREFIX+cmd+"%B selhal.%C10 Možná bys o tom měl dát vědět autorovi")
         else:
-            self.notice(origin,"%C01,08× Příkaz %B!"+cmd+"%B neznám.%C10 Pro seznam příkazů napiš !help")
+            self.notice(origin,"%C01,08× Příkaz %B"+COMMANDPREFIX+cmd+"%B neznám.%C10 Pro seznam příkazů napiš "+COMMANDPREFIX+"help")
 
     
 

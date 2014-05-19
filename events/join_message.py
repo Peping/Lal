@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import time
 from datetime import datetime
+from config import *
 
 def on_joined(bot,nick,**kw):
     if nick==bot.nickname:
@@ -9,7 +10,7 @@ def on_joined(bot,nick,**kw):
 
     # Welcome message. First check if we know this nick
     last_seen=None
-    with open("data/JoinsLeaves.csv","r") as f:
+    with open(JOINSLEAVES,"r") as f:
         f.seek(0,2)
         pos=f.tell()
         incomplete_line=""
@@ -34,14 +35,14 @@ def on_joined(bot,nick,**kw):
     else: 
         bot.send("%BAhoj, "+nick+"! Ještě jsem tě tu neviděla.%B Pokud potřebuješ pomoct, napiš !help")                
 
-    with open("data/JoinsLeaves.csv","a") as f:
+    with open(JOINSLEAVES,"a") as f:
         f.write("{0} {1} {2}\n".format(nick,"joined",time.time()))
 
 
 def on_left(bot,nick,**kw):
-    with open("data/JoinsLeaves.csv","a") as f:
+    with open(JOINSLEAVES,"a") as f:
         f.write("{0} {1} {2}\n".format(nick,"left",time.time()))
 
 def on_nick(bot,nick,new_nick,**kw):
-    with open("data/JoinsLeaves.csv","a") as f:
+    with open(JOINSLEAVES,"a") as f:
         f.write("{0} renamed {1} {2}\n".format(nick, new_nick, time.time()))
